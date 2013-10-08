@@ -34,8 +34,7 @@
         android:id="@+id/phoneNumberEditText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left|center_vertical"
-        android:digits="true">
+        android:layout_gravity="left|center_vertical">
 
         <requestFocus />
     </EditText>

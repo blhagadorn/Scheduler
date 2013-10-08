@@ -11,12 +11,14 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class MainActivity extends Activity implements ActionBar.TabListener {
-    public static FriendsList friendsList;
+
     ListView lv;
 
     @Override
@@ -24,7 +26,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         lv = (ListView)findViewById(R.id.mainListView);
-       // FriendsList friendsList = new FriendsList();
+        FriendsList friendsList = new FriendsList();
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         ActionBar.Tab friendsTab = actionBar.newTab().setText("Friends");
@@ -43,6 +45,14 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         actionBar.addTab(friendsTab);
         actionBar.addTab(eventsTab);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(friendsList!=null){
+        update();}
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 // Inflate the menu items for use in the action bar
@@ -55,7 +65,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
             case R.id.action_add_friend:
-                InputDialog.show(getApplicationContext());
+                InputDialog.show(this);
                 return true;
             case R.id.action_add_event:
                // dialogShow("events")
@@ -66,7 +76,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
     }
 
     public void update(){
-        SimpleAdapter adapter = new SimpleAdapter(this,android.R.layout.simple_list_item_1,)
+        ArrayAdapter adapter = new ArrayAdapter(MainActivity.this,R.layout.friend_item,R.id.friendItemName,friendsList.friends);
         lv.setAdapter(adapter);
     }
 

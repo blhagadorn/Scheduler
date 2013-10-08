@@ -32,9 +32,7 @@ public class InputDialog {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                MainActivity.friendsList.addFriend(name.getText().toString(),phoneNumber.getText().toString());
-                               MainActivity.update();
                                dialog.dismiss();
-
                             }
                         })
                 .setNegativeButton("Cancel",
