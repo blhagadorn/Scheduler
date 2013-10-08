@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/action_add_friend"
+        android:title="Add Friend"
+        android:showAsAction="always"/>
+    <item android:id="@+id/action_add_event"
+        android:title="Add Event"
+        android:showAsAction="always"/>
+</menu>
